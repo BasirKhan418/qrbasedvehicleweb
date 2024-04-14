@@ -1,5 +1,5 @@
 import React from 'react'
-
+import Link from 'next/link'
 const Hero = () => {
   return (
     <div className='bg-blue-200'>
@@ -50,13 +50,13 @@ const Hero = () => {
       </div>
       {/* Buttons */}
       <div className="mt-8 gap-3 flex justify-center">
-        <button
+        <Link
           className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 hover:from-violet-600 hover:to-blue-600 border border-transparent text-white text-sm font-medium rounded-full py-3 px-4 dark:focus:ring-offset-gray-800"
-          
+          href={"/components/Plans"}
         >
          
             Rent a Vehicle Now
-        </button>
+        </Link>
       
       </div>
       {/* End Buttons */}

@@ -74,25 +74,27 @@ const Navbar = () => {
                 className="font-medium text-blue-600 md:py-6 dark:text-blue-500"
                 href="/components/Plans"
                 aria-current="page"
+                onClick={() => setNavbarOpen(false)}
               >
                 Plans
               </Link>
 
-              <a
+              {/* <a
                 className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                 href="#"
               >
                 Account
-              </a>
-              <a
+              </a> */}
+              {/* <a
                 className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                 href="#"
               >
                 Work
-              </a>
+              </a> */}
               <Link
                 className="font-medium text-gray-500 hover:text-gray-400 md:py-6 dark:text-gray-400 dark:hover:text-gray-500"
                 href="/components/QrGen"
+                onClick={() => setNavbarOpen(false)}
               >
                 Generate Qr
                 
@@ -101,6 +103,7 @@ const Navbar = () => {
               <Link
                 className="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
                 href="/components/Scan"
+                onClick={() => setNavbarOpen(false)}
               >
                
                 <IoQrCode  className="flex-shrink-0 size-4"/>

@@ -1,7 +1,9 @@
+/* eslint-disable @next/next/no-sync-scripts */
 import React, { useEffect ,useState} from 'react';
 import { FaRegUser } from "react-icons/fa";
 import { CiPhone } from "react-icons/ci";
 import { useRouter } from 'next/router'
+import toast,{Toaster} from 'react-hot-toast';
 const Checkout = () => {
     const router = useRouter();
     useEffect(()=>{
@@ -45,8 +47,67 @@ const Checkout = () => {
             setPrice(e.target.value);
         }
     }
+    const handlePayment=async(e)=>{
+        console.log(email,phone,name);
+        console.log("iam in bro")
+        if(email==""||phone==""||name==""){
+        toast.error('Please fill all the details');
+        return;
+        }
+        localStorage.setItem('email',email);
+        localStorage.setItem('phone',phone);
+        localStorage.setItem('name',name);
+        localStorage.setItem('totalprice',totalprice);
+        localStorage.setItem("service","QuVehl S1 Pro - "+router.query.ty);
+        localStorage.setItem("km",router.query.t!=null?router.query.t:distance+"KM")
+        const data = { totalprice,email:email,name,phone};
+          const response = await fetch(
+            `${process.env.NEXT_PUBLIC_HOST}/api/precheckout`,
+            {
+              method: "POST", // or 'PUT'
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(data),
+            }
+          );
+       
+          const r = await response.json();
+          if(r.success){
+          var options =  {
+            key: `${process.env.NEXT_PUBLIC_KEY_ID}`,
+             // Enter the Key ID generated from the Dashboard
+            amount: r.order.amount, // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
+            currency: "INR",
+            name: `QuVehl S1 Pro - ${router.query.ty}"`, //your business name
+            description: `QuVehl S1 Pro - ${router.query.ty} book now for ₹${totalprice}.00"`,
+            image: "/pimg.png",
+            order_id: r.order.id, //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
+            callback_url: `${process.env.NEXT_PUBLIC_HOST}/api/postcheckout`,
+            prefill: {
+              //We recommend using the prefill parameter to auto-fill customer's contact information especially their phone number
+              name: name, //your customer's name
+              email: email,
+              contact: phone, //Provide the customer's phone number for better conversion rates
+            },
+            notes: {
+              address: "Razorpay Corporate Office",
+            },
+            theme: {
+              color: "#FD0872",
+            },
+          };
+          var rzp1 = new window.Razorpay(options);
+          await rzp1.open();
+          e.preventDefault();
+        }
+        else{
+            toast.error('Error in Payment');
+        }
+    }
   return (
-    <div className='mt-0 mb-8'>
+    <div className='mt-4 mb-8'>
+        <Toaster/>
       <>
   <div className="flex flex-col items-center border-b bg-blue-600 py-4 sm:flex-row sm:px-10 lg:px-20 xl:px-32">
     <p  className="text-2xl font-bold text-gray-200">
@@ -270,13 +331,13 @@ const Checkout = () => {
           <p className="text-2xl font-semibold text-gray-900"> ₹{totalprice}.00</p>
         </div>
       </div>
-      <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+      <button className="mt-4 mb-8 w-full rounded-md bg-gray-900 px-6 py-3 font-medium text-white" onClick={handlePayment}>
         Place Order & Pay
       </button>
     </div>
   </div>
 </>
-
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
     </div>
   )
 }
