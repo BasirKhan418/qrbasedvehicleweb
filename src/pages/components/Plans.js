@@ -12,7 +12,7 @@ const Plans = () => {
       <h2 className="text-2xl font-bold md:text-4xl md:leading-tight dark:text-white">
         Plans
       </h2>
-      <p className="mt-1 text-gray-600 dark:text-gray-400">
+      <p className="mt-1 text-black poppins-medium">
         Whatever your status, our offers evolve according to your needs.
       </p>
     </div>
@@ -88,12 +88,12 @@ const Plans = () => {
             </span>
           </li>
         </ul>
-        <a
+        <button
           className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-800 disabled:opacity-50 disabled:pointer-events-none"
-          href="#"
+          onClick={()=>{router.push('/components/Checkout?p=199&&t=20KM&&ty=starter')}}
         >
           Book Now
-        </a>
+        </button>
       </div>
       {/* End Card */}
       {/* Card */}
@@ -170,12 +170,12 @@ const Plans = () => {
             </span>
           </li>
         </ul>
-        <a
+        <button
           className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-white text-blue-600 hover:bg-blue-800  hover:text-blue-100 disabled:opacity-50 disabled:pointer-events-none"
-          href="#"
+          onClick={()=>{router.push('/components/Checkout?p=399&&t=50KM&&ty=premium')}}
         >
           Book Now
-        </a>
+        </button>
       </div>
       {/* End Card */}
       {/* Card */}
@@ -247,12 +247,12 @@ const Plans = () => {
             </span>
           </li>
         </ul>
-        <a
+        <button
           className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600 text-white hover:bg-blue-800 disabled:opacity-50 disabled:pointer-events-none"
-          href="#"
+          onClick={()=>{router.push('/components/Checkout?p=899&&t=100KM&&ty=business')}}
         >
             Book Now
-        </a>
+        </button>
       </div>
       {/* End Card */}
       {/* Card */}
@@ -324,11 +324,12 @@ const Plans = () => {
             </span>
           </li>
         </ul>
-        <a
+        <button
           className="mt-5 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-100 text-blue-800 hover:bg-blue-800 hover:text-white disabled:opacity-50 disabled:pointer-events-none"
+          onClick={()=>{router.push('/components/Checkout?ty=customize')}}
         >
           Book Now
-        </a>
+        </button>
       </div>
       {/* End Card */}
     </div>

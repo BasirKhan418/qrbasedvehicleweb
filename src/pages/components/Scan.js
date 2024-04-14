@@ -1,6 +1,7 @@
 import React, { useState,useEffect } from 'react'
 import QrReader from 'react-qr-scanner'
 import { useRouter } from 'next/router'
+import toast,{Toaster} from 'react-hot-toast';
 const Scan = () => {
     const previewStyle = {
         height: 240,
@@ -41,9 +42,28 @@ setDelay(true);
         }
     }
    
-    
+    const handleSubmit=(e)=>{
+    if(ticket =="https://quvehl-ltucf.ondigitalocean.app/components/Plans"){
+        router.push('/components/Plans');
+    }
+    else{
+        setTimeout(()=>{
+        let a  = confirm("Do you want to rent a vehicle?");
+        if(a){
+            router.push('/components/Plans');
+        }
+        else{
+            let b = confirm("Do you want a redirection?");
+            window.open(ticket,'_blank')
+        }
+        ;
+        },3000)
+        toast.error('Likely Invalid Url');
+    }
+    }
   return (
     <div className='bg-blue-400 min-h-screen'>
+        <Toaster/>
       <main
     id="content"
     role="main"
@@ -106,7 +126,7 @@ setDelay(true);
             <button
               type="submit"
               className="sm:p-4 py-3 px-4 inline-flex justify-center items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent bg-blue-600  text-white hover:bg-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600"
-              
+              onClick={handleSubmit}
             >
              Get Now
               <svg

@@ -1,9 +1,10 @@
 import React, { useState } from "react";
+import { IoQrCode } from "react-icons/io5";
 import Link from "next/link";
 const Navbar = () => {
   const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <div className="sticky top-4 bg-blue-200 z-20 ">
+    <div className="sticky top-4 z-20 ">
       {/* ========== HEADER ========== */}
       <header className=" inset-x-0 flex flex-wrap md:justify-start md:flex-nowrap z-50 w-full text-sm ">
         <nav
@@ -12,11 +13,12 @@ const Navbar = () => {
         >
           <div className="flex items-center justify-between">
             <Link
-              className="flex-none  dark:text-white text-2xl font-bold bg-clip-text bg-gradient-to-tr from-blue-600 to-purple-400 text-transparent "
+              className="flex items-center justify-center dark:text-white text-2xl font-bold bg-clip-text bg-gradient-to-tr from-blue-600 to-purple-400 text-transparent "
               href="/"
               aria-label="Brand"
             >
               Quvehl
+              <IoQrCode  className="text-blue-600 mx-1 text-xl "/>
             </Link>
             <div className="md:hidden">
               <button
@@ -93,27 +95,15 @@ const Navbar = () => {
                 href="/components/QrGen"
               >
                 Generate Qr
+                
               </Link>
 
               <Link
                 className="flex items-center gap-x-2 font-medium text-gray-500 hover:text-blue-600 md:border-s md:border-gray-300 md:my-6 md:ps-6 dark:border-gray-700 dark:text-gray-400 dark:hover:text-blue-500"
                 href="/components/Scan"
               >
-                <svg
-                  className="flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width={24}
-                  height={24}
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                >
-                  <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-                  <circle cx={12} cy={7} r={4} />
-                </svg>
+               
+                <IoQrCode  className="flex-shrink-0 size-4"/>
                 Scan Qr
               </Link>
             </div>
