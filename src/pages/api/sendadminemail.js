@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const handler = async (req, res) => {
     console.log(req.body);
     const transporter = await nodemailer.createTransport({
-        host: "smtp-relay.brevo.com",
+        host: "smtp.gmail.com",
         port: 587,
         secure: false,
         auth: {
@@ -15,7 +15,7 @@ const handler = async (req, res) => {
 
       const info = await transporter.sendMail({
         from: '<support@Quvehl.com>', // sender address
-        to: `khanbasir5555@gmail.com,prasadrudra279@gmail.com,subhashreepatro28@gmail.com,nyayabrata09@gmail.com,priyansh272003@gmail.com,gsipraranipatra@gmail.com,ksonali682004@gmail.com,abhipsasahoo2003@gmail.com,smrutirupaparida@gmail.com,gayatrisahu522005@gmail.com,220301120209@cutm.ac.in`, // list of receivers
+        to: `khanbasir5555@gmail.com,prasadrudra279@gmail.com,nyayabrata09@gmail.com`, // list of receivers
         subject: `🚗 Quvehl: New Vehicle Rental Alert! 🎉`, // Subject line
         text: "Quvehl: New Vehicle Rental Alert!", // plain text body
         html: `

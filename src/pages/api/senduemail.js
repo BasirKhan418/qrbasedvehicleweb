@@ -4,7 +4,7 @@ const nodemailer = require("nodemailer");
 const handler = async (req, res) => {
     console.log(req.body);
     const transporter = await nodemailer.createTransport({
-        host: "smtp-relay.brevo.com",
+        host: "smtp.gmail.com",
         port: 587,
         secure: false,
         auth: {
